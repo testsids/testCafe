@@ -3,28 +3,29 @@ import signupObject from '../Base/PageObjects/signupObjects'
 import signupData from '../Base/PageData/signupData'
 
 
-fixture `Sign Up Flow`
-    .page `https://test.brewoptix.com/session/sign-up`;
+fixture`Sign Up Flow`
+    .page`https://test.brewoptix.com/session/sign-up`;
 
 var moment = require('moment');
 moment().format();
 
 var email = "QaTesting" + (Math.floor(Math.random() * 10000) + 1) + "@mailinator.com";
-var yourName = "QaTest"+ moment().format("h:mm:ss");
+var yourName = "QaTest" + moment().format("h:mm:ss");
 
 test('Retailer test scripts', async t => {
     await t
+        .expect(signupObject.retailerCheckbox.exists).ok('', { timeout: 30000 })
         .click(signupObject.retailerCheckbox)
-        .typeText(signupObject.companyNameInput,signupData.retailerCompanyName)
+        .typeText(signupObject.companyNameInput, signupData.retailerCompanyName)
         .pressKey('down')
         .pressKey('enter')
-        .typeText(signupObject.nameInput,yourName)
-        .typeText(signupObject.emailAddressInput,email)
-        .typeText(signupObject.passwordInput,signupData.password)
+        .typeText(signupObject.nameInput, yourName)
+        .typeText(signupObject.emailAddressInput, email)
+        .typeText(signupObject.passwordInput, signupData.password)
         .click(signupObject.signUpButton)
-        .wait(2000)
+        .expect(signupObject.retailerName.exists).ok('', { timeout: 30000 })
         .expect((signupObject.retailerName.innerText)).eql(yourName)
         .expect((signupObject.retailerEmail.innerText)).eql(email.toLocaleLowerCase());
 
-    
+
 });
