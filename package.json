@@ -1,0 +1,20 @@
+{
+  "name": "testcafe_demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "config": {
+    "specs": "*"
+  },
+  "scripts": {
+    "test:headless": "npx testcafe \"chrome:headless\" testScripts/%npm_package_config_specs%.js --skip-js-errors",
+    "test:gui": "npx testcafe chrome testScripts/%npm_package_config_specs%.js --skip-js-errors --reporter html:./Report/htmlReport.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "moment": "^2.29.1",
+    "testcafe": "^1.10.1",
+    "testcafe-reporter-html": "^1.4.6"
+  }
+}
