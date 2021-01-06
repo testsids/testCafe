@@ -15,9 +15,14 @@ class signupObject {
         this.stateInput = Selector('input[aria-label="State"]');
         this.postalCodeInput = Selector('input[aria-label="Postal Code"]');
         this.phoneInput = Selector('input[aria-label="Phone"]');
-        this.retailerName = Selector('div.text-center div:nth-child(1)');
-        this.retailerEmail = Selector('div.text-center div:nth-child(2)');
+        this.yourName = Selector('div.text-center div:nth-child(1)');
+        this.emailAddress = Selector('div.text-center div:nth-child(2)');
         this.signUpButton = Selector('div.d-flex.justify-center > button > div');
+        this.cardNumber = Selector('input[name="cardnumber"]');
+        this.expiryDateField = Selector('input[name="exp-date"]');
+        this.cvv = Selector('input[name="cvc"]');
+        this.zip = Selector('input[name="postal"]');
+        this.switchToIframe = Selector('div.__PrivateStripeElement>iframe');
     }
 }
 export default new signupObject()
